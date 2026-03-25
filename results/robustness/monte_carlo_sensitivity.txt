@@ -1,0 +1,5 @@
+Monte Carlo Sensitivity Analysis
+Iterations: 500, Perturbation: all coefficients +/-10%
+CRAM-lat r: mean=-0.679, sd=0.0049, 95% CI=[-0.688, -0.670]
+% |r|>0.7: 0.0%
+% p<0.001: 100.0%
