@@ -1,0 +1,11 @@
+ECOLOGICAL ANALYSIS RESULTS
+============================================================
+
+Latitude vs CIR: r=-0.383 (p=0.0004), rho=-0.075 (p=0.5090), n=80
+Temperature vs CIR: r=0.274 (p=0.0140), rho=0.357 (p=0.0012), n=80
+DOC vs CIR: r=0.126 (p=0.2658), rho=0.166 (p=0.1423), n=80
+Richness vs CIR: r=-0.397 (p=0.0003), rho=-0.295 (p=0.0078), n=80
+  CIR_CRAM vs temperature_C: r=0.593, p=0.0000, n=80
+  CIR_CRAM vs DOC_mgL: r=0.397, p=0.0003, n=80
+  CIR_CRAM vs latitude: r=-0.743, p=0.0000, n=80
+Replicate CV: 0.0032 (27 sites)

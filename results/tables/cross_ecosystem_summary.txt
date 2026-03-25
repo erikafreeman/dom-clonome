@@ -1,0 +1,28 @@
+CROSS-ECOSYSTEM CIR COMPARISON
+River DOM (WHONDRS 2018) vs Marine DOM (PANGAEA Moye et al. 2025)
+============================================================
+
+River: 8,972 formulae
+  aromatic                  0.881  (~8 isomers)
+  condensed_aromatic        0.896  (~8 isomers)
+  CRAM                      0.988  (~10 isomers)
+  protein_like              1.086  (~12 isomers)
+  carbohydrate_like         1.199  (~16 isomers)
+  N_containing              1.237  (~17 isomers)
+  other                     1.252  (~18 isomers)
+  lipid_like                1.267  (~19 isomers)
+
+Marine: 30,198 formulae
+  aromatic                  0.853  (~7 isomers)
+  condensed_aromatic        0.877  (~8 isomers)
+  CRAM                      1.023  (~11 isomers)
+  protein_like              1.037  (~11 isomers)
+  carbohydrate_like         1.204  (~16 isomers)
+  N_containing              1.221  (~17 isomers)
+  other                     1.248  (~18 isomers)
+  lipid_like                1.273  (~19 isomers)
+
+CRAM comparison:
+  River CRAM median:  0.988 (~10 isomers)
+  Marine CRAM median: 1.023 (~11 isomers)
+  Marine CRAM has 8% more isomers per formula

@@ -1,0 +1,67 @@
+======================================================================
+ROBUSTNESS CHECKS — Response to Gemini Review
+======================================================================
+
+Q7: Does CIR-richness anti-correlation survive replicate filtering?
+----------------------------------------------------------------------
+  Original (all formulae):          r = -0.397, p = 0.0003, n = 80
+  Replicate-filtered (all-rep only): r = -0.380, p = 0.0005, n = 80
+  Mean formulae per sample (original):  2262
+  Mean formulae per sample (filtered):  1604
+  VERDICT: Anti-correlation SURVIVES replicate filtering. Not an artifact of noise.
+
+Q9: Does class ordering persist under null (uniform) constraints?
+----------------------------------------------------------------------
+  Median CIR by class — Original vs. Null (no class-specific constraints):
+  Class                       Original       Null       Diff
+  ------------------------- ---------- ---------- ----------
+  aromatic                       0.881      1.227     +0.345
+  condensed_aromatic             0.896      1.198     +0.302
+  CRAM                           0.988      1.245     +0.258
+  protein_like                   1.086      1.305     +0.219
+  carbohydrate_like              1.199      1.406     +0.207
+  N_containing                   1.237      1.269     +0.033
+  other                          1.252      1.252     +0.000
+  lipid_like                     1.267      1.336     +0.068
+
+  Original rank order:  aromatic < condensed_aromatic < CRAM < protein_like < carbohydrate_like < N_containing < other < lipid_like
+  Null rank order:      condensed_aromatic < aromatic < CRAM < other < N_containing < protein_like < lipid_like < carbohydrate_like
+  Rank order preserved: NO — ordering changed
+  VERDICT: Constraint penalties CHANGE the class ordering.
+           The ranking is partly driven by asymmetric penalty counts.
+
+Q10: Does CIR_CRAM outperform simpler metrics for latitude prediction?
+----------------------------------------------------------------------
+  Metric                      r vs Lat            p           Conclusion
+  ------------------------- ---------- ------------ --------------------
+  CIR_CRAM                      -0.743       0.0000                  ***
+  Mean DBE (CRAM)                0.660       0.0000                  ***
+  Mean H/C (CRAM)               -0.689       0.0000                  ***
+  Mean O/C (CRAM)               -0.478       0.0000                  ***
+  Mean AI_mod (CRAM)             0.591       0.0000                  ***
+  Mean Mass (CRAM)               0.614       0.0000                  ***
+  Mean NOSC (CRAM)              -0.170       0.1326                   ns
+  CRAM count                     0.245       0.0284                    *
+
+  If CIR_CRAM has the strongest |r|, it outperforms simpler metrics.
+  If a simpler metric matches or exceeds CIR_CRAM, CIR adds no value.
+
+Outlier leverage check: CRAM-latitude correlation
+----------------------------------------------------------------------
+  Full dataset: r = -0.743, p = 0.000000, n = 80
+  Leave-one-site-out analysis (27 sites):
+    Site            r without     Change
+    S000055            -0.801     +0.058
+    S000014            -0.685     -0.058
+    S000030            -0.765     +0.022
+    S000013            -0.722     -0.021
+    S000012            -0.724     -0.019
+    S000009            -0.760     +0.017
+    S000060            -0.751     +0.008
+    S000011            -0.735     -0.008
+    S000003            -0.749     +0.007
+    S000008            -0.749     +0.006
+  LOO r range: [-0.801, -0.685]
+  Max influence: removing S000055 changes r by +0.058
+  VERDICT: Correlation ROBUST. Even removing the most influential site,
+           r remains strong (worst case: -0.685).

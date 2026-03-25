@@ -1,0 +1,88 @@
+======================================================================
+STATISTICAL CORRECTIONS — Addressing Gemini Referee Report
+======================================================================
+
+1. TABLE 1 FORMULA COUNTS
+----------------------------------------------------------------------
+Total assigned formulae: 8972
+  CRAM                        2735 (30.5%)
+  other                       1802 (20.1%)
+  lipid_like                  1225 (13.7%)
+  aromatic                    1136 (12.7%)
+  carbohydrate_like            951 (10.6%)
+  N_containing                 472 (5.3%)
+  condensed_aromatic           446 (5.0%)
+  protein_like                 205 (2.3%)
+  SUM                         8972 (100.0%)
+
+  'other' class present: YES
+  'other' count: 1802
+  Sum WITHOUT other: 7170
+  FIX: Table 1 must include 'other' class to sum to 8,972.
+
+2. CLASS ORDERING BY MEDIAN CIR
+----------------------------------------------------------------------
+  aromatic                  median=0.881  (~7.6 isomers)
+  condensed_aromatic        median=0.896  (~7.9 isomers)
+  CRAM                      median=0.988  (~9.7 isomers)
+  protein_like              median=1.086  (~12.2 isomers)
+  carbohydrate_like         median=1.199  (~15.8 isomers)
+  N_containing              median=1.237  (~17.2 isomers)
+  other                     median=1.252  (~17.8 isomers)
+  lipid_like                median=1.267  (~18.5 isomers)
+
+  Lowest class: aromatic (0.881)
+  NOTE: aromatic (0.881) < condensed_aromatic (0.896)
+  FIX: Text should say 'aromatic and condensed aromatic are the most
+  constrained' rather than singling out condensed_aromatic as lowest.
+
+3. PSEUDOREPLICATION FIX: Site-level means (n=27)
+----------------------------------------------------------------------
+  Sites: 27
+  (Aggregated from 80 triplicates)
+
+  ORIGINAL (n=80 pseudoreplicated) vs CORRECTED (n=27 site means):
+  Variable                     r(n=80)      p(n=80)    r(n=27)      p(n=27)   Change
+  ------------------------- ---------- ------------ ---------- ------------ --------
+  Lat vs mean_CIR               -0.383       0.0004     -0.397        0.040   -0.014
+  Temp vs mean_CIR               0.274        0.014      0.271        0.171   -0.003
+  DOC vs mean_CIR                0.126        0.266      0.111        0.583   -0.015
+  Richness vs mean_CIR          -0.397       0.0003     -0.400        0.039   -0.003
+  Lat vs CIR_CRAM               -0.743       0.0000     -0.785       0.0000   -0.042
+  Temp vs CIR_CRAM               0.593       0.0000      0.631       0.0004   +0.037
+  DOC vs CIR_CRAM                0.397       0.0003      0.426        0.027   +0.029
+
+4. LEAVE-ONE-OUT (SITE LEVEL, n=27)
+----------------------------------------------------------------------
+  Full: r = -0.785, p = 0.000001, n = 27
+  Top 5 most influential sites:
+    S000014: r_without = -0.728 (change: -0.057)
+    S000055: r_without = -0.832 (change: +0.047)
+    S000030: r_without = -0.809 (change: +0.023)
+    S000013: r_without = -0.767 (change: -0.019)
+    S000012: r_without = -0.767 (change: -0.018)
+  LOO range: [-0.832, -0.728]
+
+5. CIR_CRAM vs SIMPLER METRICS (SITE LEVEL, n=27)
+----------------------------------------------------------------------
+  Metric                       r(n=27)            p
+  ------------------------- ---------- ------------
+  CIR_CRAM                      -0.785       0.0000
+  Mean H/C                      -0.726       0.0000
+  Mean DBE                       0.711       0.0000
+  Mean Mass                      0.667       0.0001
+  Mean AI_mod                    0.643       0.0003
+
+6. TEMPERATURE CHECK
+----------------------------------------------------------------------
+  S000022: 63.0 C
+  S000035: 28.0 C
+  S000059: 27.7 C
+  S000014: 26.5 C
+  S000011: 21.9 C
+  WARNING: Max temperature 63.0C is unusually high.
+  This may be a hot spring site or a data entry error. Verify.
+
+7. CIR-RICHNESS ANTI-CORRELATION AT SITE LEVEL
+----------------------------------------------------------------------
+  Site-level (n=27): r = -0.400, p = 0.0387
